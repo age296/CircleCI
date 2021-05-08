@@ -24,10 +24,10 @@ jobs:
     steps:
       - run: exit 0
       - discord/status:
-          fail_only: true
+          #fail_only: true
           mentions: 'G2Waterblade#5784'
-          only_for_branches: only_for_branches
-          webhook: webhook
+         # only_for_branches: only_for_branches
+         # webhook: webhook
     orbs:
     discord: teka23/discord@x.y.z
     version: 2.1
