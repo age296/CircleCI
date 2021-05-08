@@ -27,7 +27,7 @@ jobs:
           #fail_only: true
           mentions: 'G2Waterblade#5784'
          # only_for_branches: only_for_branches
-         # webhook: webhook
+          webhook: https://discord.com/api/webhooks/840738570049814548/mZcN9I2_xFSlD1jat19PfBOcVQMEq0ZX4xU7IhKgXio1QUIv45lbUDaGsB4qN5IESQE3
     orbs:
     discord: teka23/discord@x.y.z
     version: 2.1
