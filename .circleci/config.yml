@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: mvn test
       - store_artifacts:
-          path: target/site/jacoco/index.html
+          path: target/site/jacoco/**
       - store_test_results:
           path: target/surefire-reports
   build:
