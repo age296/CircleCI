@@ -17,6 +17,20 @@ jobs:
     steps:
       - checkout
       - run: mvn -Dmaven.test.skip=true package
+    
+  build2:
+    docker:
+      - image:  circleci/openjdk:stretch
+    steps:
+      - run: exit 0
+      - discord/status:
+          fail_only: true
+          mentions: 'G2Waterblade#5784'
+          only_for_branches: only_for_branches
+          webhook: webhook
+    orbs:
+    discord: teka23/discord@x.y.z
+    version: 2.1
 workflows:
   version: 2
 
