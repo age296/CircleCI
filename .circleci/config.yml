@@ -20,11 +20,13 @@ jobs:
           #command: mvn -B -DskipTests clean package
           command: mvn -f pom.xml javadoc:javadoc javadoc:aggregate      
       - store_artifacts:
-          path: /tmp/artifacts
+          path: /*
       # Then run your tests!
       - run:
           name: Test
           command: mvn test
+      - store_test_results:
+           path: test-results
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
