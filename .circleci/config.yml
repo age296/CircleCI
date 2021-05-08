@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run: mvn -Dmaven.test.skip=true package
     
-  build2:
+  discord:
     docker:
       - image:  circleci/openjdk:stretch
     steps:
@@ -40,3 +40,6 @@ workflows:
       - test:
           requires:
             - build
+      - discord:
+         requires:
+           - test
