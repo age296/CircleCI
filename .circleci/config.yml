@@ -1,0 +1,51 @@
+version: 2.1
+orbs:
+  discord: teka23/discord@0.0.1
+jobs:
+  test:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
+      - checkout
+      - run: mvn test
+      - store_artifacts:
+          path: target
+      - store_test_results:
+          path: target/surefire-reports
+  build:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
+      - checkout
+      - run: mvn -Dmaven.test.skip=true package
+  discordmessage:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
+      - discord/notify:
+          color: '4383476'
+          mentions: 'USERID1,USERID2,&ROLE_ID1,here,everyone'
+          message: This is a custom message notification
+          webhook: $webhook
+  discordstatus:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
+      - run: exit 0
+      - discord/status:
+          fail_only: false
+          webhook: $webhook  
+workflows:
+  version: 2.1
+
+  build-then-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - discordmessage
+      - discordstatus:
+          requires:
+            - test
+            - discordmessage
