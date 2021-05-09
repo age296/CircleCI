@@ -27,6 +27,11 @@ jobs:
           mentions: 'USERID1,USERID2,&ROLE_ID1,here,everyone'
           message: This is a custom message notification
           webhook: https://discord.com/api/webhooks/840738570049814548/mZcN9I2_xFSlD1jat19PfBOcVQMEq0ZX4xU7IhKgXio1QUIv45lbUDaGsB4qN5IESQE3
+  discordstatus:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
+      - run: exit 0
       - discord/status:
           fail_only: false
           only_for_branches: only_for_branches
@@ -41,3 +46,7 @@ workflows:
           requires:
             - build
       - discordmessage
+      - discordstatus:
+          requires:
+            - test
+            - discordmessage
