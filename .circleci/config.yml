@@ -1,5 +1,4 @@
-version: 2.0
-
+version: 2.1
 jobs:
   test:
     docker:
@@ -29,7 +28,7 @@ jobs:
          # only_for_branches: only_for_branches
           webhook: https://discord.com/api/webhooks/840738570049814548/mZcN9I2_xFSlD1jat19PfBOcVQMEq0ZX4xU7IhKgXio1QUIv45lbUDaGsB4qN5IESQE3
     orbs:
-    discord: teka23/discord@x.y.z
+      discord: teka23/discord@x.y.z
     version: 2.1
 workflows:
   version: 2
