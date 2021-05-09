@@ -26,7 +26,7 @@ jobs:
           color: '4383476'
           mentions: 'USERID1,USERID2,&ROLE_ID1,here,everyone'
           message: This is a custom message notification
-          webhook: https://discord.com/api/webhooks/840738570049814548/mZcN9I2_xFSlD1jat19PfBOcVQMEq0ZX4xU7IhKgXio1QUIv45lbUDaGsB4qN5IESQE3
+          webhook: $webhook
   discordstatus:
     docker:
       - image: circleci/openjdk:stretch
