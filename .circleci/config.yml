@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   discord: teka23/discord@0.0.1
-  win: circleci/windows@2.2.0
+  #win: circleci/windows@2.2.0
 jobs:
   test:
     #docker:
@@ -26,7 +26,9 @@ jobs:
       - checkout
       - run: mvn -Dmaven.test.skip=true package
   discordmessage:
-    executor: win/default
+    #executor: win/default
+    docker:
+      - image: circleci/openjdk:11.0.0
     steps:
       - discord/notify:
           color: '4383476'
