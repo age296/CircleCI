@@ -3,8 +3,10 @@ orbs:
   discord: teka23/discord@0.0.1
 jobs:
   test:
-    docker:
-      - image: circleci/openjdk:stretch
+    #docker:
+    #  - image: circleci/openjdk:stretch
+    machine: # executor type
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
       - run: mvn test
