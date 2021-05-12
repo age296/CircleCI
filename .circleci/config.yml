@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   discord: teka23/discord@0.0.1
+  windows: circleci/windows@2.4.0
 jobs:
   test:
     #docker:
@@ -20,18 +21,17 @@ jobs:
           webhook: $webhook  
   build:
     docker:
-      - image: circleci/openjdk:stretch
+      - image: circleci/openjdk:11.0.0
     steps:
       - checkout
       - run: mvn -Dmaven.test.skip=true package
   discordmessage:
-    docker:
-      - image: circleci/openjdk:stretch
+    executor: win/default
     steps:
       - discord/notify:
           color: '4383476'
-          mentions: 'USERID1,USERID2,&ROLE_ID1,here,everyone'
-          message: This is a custom message notification
+          mentions: 'G2Waterblade,Crenix,here,everyone'
+          message: CircleCI acaba de empezar!
           webhook: $webhook
 workflows:
   version: 2.1
