@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class Ejercicio1Test {
 	@ParameterizedTest (name = "{index} => Con entrada ({0}) sale {1}")
-	@CsvSource({"2, 2",
+	@CsvSource({"2, 1",
 				"10, 1",
 				"6, 1",
 				"14, 7"})
